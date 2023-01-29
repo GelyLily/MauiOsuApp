@@ -19,5 +19,9 @@ namespace MauiOsuApp.ViewModels
         {
 
         }
+
+        [RelayCommand]
+        Task Back() => NavigationService.NavigateToAsync("..");
+
     }
 }

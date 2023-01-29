@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MauiOsuApp.Services.Settings;
+using MauiOsuApp.Views;
 
 namespace MauiOsuApp.Services.Navigation
 {
@@ -19,8 +20,8 @@ namespace MauiOsuApp.Services.Navigation
         public Task InitializeAsync() =>
             NavigateToAsync(
                 string.IsNullOrEmpty(_settingsService.AuthAccessToken)
-                    ? "Main"
-                    : "Main");
+                    ? "//" + nameof(MainPage)
+                    : "//" + nameof(MainPage));
 
         public Task NavigateToAsync(string route, IDictionary<string, object> routeParameters = null)
         {

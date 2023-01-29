@@ -27,7 +27,7 @@ public partial class AppShell : Shell
 
     private static void InitializeRouting()
     {
-        Routing.RegisterRoute("Profile", typeof(ProfilePage));
-        Routing.RegisterRoute("Main", typeof(MainPage));
+        Routing.RegisterRoute(nameof(ProfilePage), typeof(ProfilePage));
+        Routing.RegisterRoute(nameof(MainPage), typeof(MainPage));
     }
 }

@@ -14,5 +14,11 @@
             Text="This is an osu! profile"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
+        <Button
+                x:Name="BackBtn"
+                Text="Go back"
+                SemanticProperties.Hint="Go back to the main page"
+                Command="{Binding Path=BackCommand}"
+                HorizontalOptions="Center" />
     </VerticalStackLayout>
 </views:ContentPageBase>
