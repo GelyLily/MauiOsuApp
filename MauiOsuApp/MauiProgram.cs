@@ -1,8 +1,10 @@
 ﻿using Microsoft.Extensions.Logging;
 using CommunityToolkit.Maui;
 using MauiOsuApp.ViewModels;
+using MauiOsuApp.Views;
 using Microsoft.Maui.Hosting;
 using MauiOsuApp.Services.Navigation;
+using MauiOsuApp.Services.Settings;
 
 namespace MauiOsuApp;
 public static class MauiProgram
@@ -28,7 +30,8 @@ public static class MauiProgram
 
     public static MauiAppBuilder RegisterAppServices(this MauiAppBuilder mauiAppBuilder)
     {
-        mauiAppBuilder.Services.AddSingleton<INavigationService, MauiNavigationService>(); ;
+        mauiAppBuilder.Services.AddSingleton<INavigationService, MauiNavigationService>();
+        mauiAppBuilder.Services.AddSingleton<ISettingsService, SettingsService>();
 
         return mauiAppBuilder;
     }
@@ -44,6 +47,7 @@ public static class MauiProgram
     public static MauiAppBuilder RegisterViews(this MauiAppBuilder mauiAppBuilder)
     {
         mauiAppBuilder.Services.AddTransient<MainPage>();
+        mauiAppBuilder.Services.AddTransient<ProfilePage>();
 
         return mauiAppBuilder;
     }

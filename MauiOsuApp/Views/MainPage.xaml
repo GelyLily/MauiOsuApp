@@ -1,12 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+<views:ContentPageBase 
+             x:Class="MauiOsuApp.Views.MainPage"
+             xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:MauiOsuApp"
-             x:Class="MauiOsuApp.Views.MainPage">
-
-    <ContentPage.BindingContext>
-        <local:MainViewModel/>
-    </ContentPage.BindingContext>
+             xmlns:viewmodels="clr-namespace:MauiOsuApp.ViewModels"
+             xmlns:views="clr-namespace:MauiOsuApp.Views;assembly=MauiOsuApp"
+             Title="MAIN"
+             x:DataType="viewmodels:MainViewModel">
 
     <ScrollView>
         <VerticalStackLayout
@@ -37,10 +38,10 @@
                 x:Name="CounterBtn"
                 Text="Click me"
                 SemanticProperties.Hint="Counts the number of times you click"
-                Command="{Binding Path=NavigateProfile}"
+                Command="{Binding Path=NavigateProfileCommand}"
                 HorizontalOptions="Center" />
 
         </VerticalStackLayout>
     </ScrollView>
 
-</ContentPage>
+</views:ContentPageBase>

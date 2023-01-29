@@ -3,31 +3,34 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using CommunityToolkit.Mvvm.Messaging;
 using MauiOsuApp.Services.Navigation;
+using MauiOsuApp.Services.Settings;
+using MauiOsuApp.ViewModels.Base;
 
-namespace MauiOsuApp
+namespace MauiOsuApp.ViewModels
 {
 
-    public sealed record CountChangedMessage(string Text);
-    public partial class MainViewModel : ObservableObject
+    public partial class MainViewModel : BaseViewModel
     {
         [ObservableProperty]
         private string message = "Click me";
 
-        public INavigationService NavigationService { get; private set; }
+        public ICommand NavigateProfileCommand { get; }
 
-        public MainViewModel(INavigationService navigationService)
+
+        public MainViewModel(INavigationService navigationService, ISettingsService settingsService)
+            : base(navigationService, settingsService)
         {
-
+            NavigateProfileCommand = new AsyncRelayCommand(NavigateProfile);
         }
         
-        [RelayCommand]
         private async Task NavigateProfile()
         {
-            await MauiNavigationService.NavigateToAsync("//Profile");
+            await NavigationService.NavigateToAsync("Profile");
             
         }
     }

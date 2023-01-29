@@ -1,18 +1,16 @@
 ﻿using CommunityToolkit.Mvvm.Messaging;
+using MauiOsuApp.Services.Navigation;
+using MauiOsuApp.ViewModels;
+using MauiOsuApp.Views;
 
-namespace MauiOsuApp;
+namespace MauiOsuApp.Views;
 
-public partial class MainPage : ContentPage
+public partial class MainPage : ContentPageBase
 {
-	public MainPage()
+	public MainPage(MainViewModel viewModel)
 	{
-		InitializeComponent();
-
-        WeakReferenceMessenger.Default.Register<CountChangedMessage>(this, (r, m) =>
-        {
-            CounterBtn.Text = m.Text;
-            SemanticScreenReader.Announce(m.Text);
-        });
+        BindingContext = viewModel;
+        InitializeComponent();
     }
 
 }

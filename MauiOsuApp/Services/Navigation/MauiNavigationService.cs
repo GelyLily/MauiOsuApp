@@ -19,8 +19,8 @@ namespace MauiOsuApp.Services.Navigation
         public Task InitializeAsync() =>
             NavigateToAsync(
                 string.IsNullOrEmpty(_settingsService.AuthAccessToken)
-                    ? "//Main"
-                    : "//Main/");
+                    ? "Main"
+                    : "Main");
 
         public Task NavigateToAsync(string route, IDictionary<string, object> routeParameters = null)
         {
